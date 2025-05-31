@@ -1,20 +1,11 @@
 ---
-title: "Teaching experience 2"
+title: "Math 531: Real Analysis (Graduate)"
 collection: teaching
-type: "Workshop"
-permalink: /teaching/2015-spring-teaching-1
-venue: "University 1, Department"
-date: 2015-01-01
-location: "City, Country"
+type: "Grader"
+# permalink: /teaching/2015-spring-teaching-1
+venue: "Duke University, Department of Mathematics"
+date: "Spring 2025"
+location: "Durham, NC"
 ---
 
-This is a description of a teaching experience. You can use markdown like any other post.
-
-Heading 1
-======
-
-Heading 2
-======
-
-Heading 3
-======
+Evaluated and provided detailed feedback on weekly Real Analysis I homework assignments for a graduate-level course with 20+ students, ensuring clarity, rigor, and consistency.
