@@ -25,7 +25,7 @@ author:
   avatar           : "RichardCui.jpg"
   name             : "Ziyao (Richard) Cui"
   pronouns         : # "he/him"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "CS @ Duke"
   location         : "Durham, NC"
   employer         : "Duke University"
   uri              : # URL
@@ -80,10 +80,10 @@ author:
 publication_category:
   books:
     title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
+  published:
+    title: ''    
+  preparation:
+    title: 'Publications in Preparation'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
