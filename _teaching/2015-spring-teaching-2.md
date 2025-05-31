@@ -4,7 +4,7 @@ collection: teaching
 type: "Grader"
 # permalink: /teaching/2015-spring-teaching-1
 venue: "Duke University, Department of Mathematics"
-date: "Spring 2025"
+date: 01-01-2025
 location: "Durham, NC"
 ---
 

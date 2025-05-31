@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate Teaching Assistant"
 # permalink: /teaching/2014-spring-teaching-1
 venue: "Duke University, Department of Computer Science"
-date: "Fall 2024"
+date: 09-01-2024
 location: "Durham, NC"
 ---
 
