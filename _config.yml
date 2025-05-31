@@ -24,7 +24,7 @@ author:
   # Biographic information
   avatar           : "RichardCui.jpg"
   name             : "Ziyao (Richard) Cui"
-  pronouns         : "he/him"  
+  pronouns         : # "he/him"  
   bio              : "Short biography for the left-hand sidebar"
   location         : "Durham, NC"
   employer         : "Duke University"
