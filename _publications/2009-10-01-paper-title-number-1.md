@@ -3,11 +3,10 @@ title: "On Membership Inference Attacks in Knowledge Distillation"
 collection: publications
 category: published
 permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 date: 2025-05-17
 venue: 'arXiv preprint'
 slidesurl: 'https://arxiv.org/abs/2505.11837' # Use as abstract link
-paperurl: 'hhttps://arxiv.org/pdf/2505.11837'
+paperurl: 'https://arxiv.org/pdf/2505.11837'
 bibtexurl: 'http://cuiziyao.github.io/files/bibtex1.bib'
 citation: 'Ziyao Cui, Minxing Zhang, Jian Pei' # Use as author names
 ---
