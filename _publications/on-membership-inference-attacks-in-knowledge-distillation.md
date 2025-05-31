@@ -2,7 +2,7 @@
 title: "On Membership Inference Attacks in Knowledge Distillation"
 collection: publications
 category: published
-permalink: /publication/2009-10-01-paper-title-number-1
+permalink: /publication/on-membership-inference-attacks-in-knowledge-distillation
 date: 2025-05-17
 venue: 'arXiv preprint'
 slidesurl: 'https://arxiv.org/abs/2505.11837' # Use as abstract link
