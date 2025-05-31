@@ -48,9 +48,9 @@
 
     {% if post.excerpt and site.read_more != 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
-    {% elsif post.excerpt and site.read_more == 'enabled' %}
+    <!-- {% elsif post.excerpt and site.read_more == 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
-    {% endif %}
+    {% endif %} -->
     
     {% if post.citation and post.paperurl and post.slidesurl and post.bibtexurl %}
       <p>{{ post.citation }}<br /><a href="{{ post.paperurl }}">PDF</a> | <a href="{{ post.slidesurl }}">Abstract</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
