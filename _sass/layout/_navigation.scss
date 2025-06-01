@@ -88,7 +88,7 @@
       border-radius: 0;
 
       &:hover {
-        color: #2979ab;
+        color: var(--global-link-color-hover);
       }
 
       &.current {
@@ -136,7 +136,7 @@
     border-radius: $border-radius;
 
     &:hover {
-      color: #2979ab;
+      color: var(--global-link-color-hover);
     }
 
     &:first-child {
@@ -185,7 +185,7 @@
     text-decoration: none;
 
     &:hover {
-      color: #2979ab;
+      color: var(--global-masthead-link-color-hover);
     }
   }
 
@@ -277,7 +277,7 @@
       font-size: $type-size-5;
 
       &:hover {
-        color: #2979ab;
+        color: var(--global-masthead-link-color-hover);
         background: var(--global-border-color);
       }
     }
@@ -334,7 +334,7 @@
   a {
     display: block;
     padding: 0.125em 0;
-    color: inherit;
+    color: #2979ab;
 
     &:hover {
       text-decoration: underline;
