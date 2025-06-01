@@ -5,7 +5,7 @@ category: preparation
 permalink: /publication/data-buyer-privacy-with-time-series-data
 # excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
 # date: 2010-10-01
-venue: 'To be submitted to AAAI'
+venue: 'To be submitted to AAAI Conference on Artificial Intelligence'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
 citation: '<strong>Ziyao Cui</strong>, Minxing Zhang, Jian Pei'
