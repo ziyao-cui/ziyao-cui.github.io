@@ -88,7 +88,7 @@
       border-radius: 0;
 
       &:hover {
-        color: var(--global-link-color-hover);
+        color: #2979ab;
       }
 
       &.current {
@@ -136,7 +136,7 @@
     border-radius: $border-radius;
 
     &:hover {
-      color: var(--global-link-color-hover);
+      color: #2979ab;
     }
 
     &:first-child {
@@ -185,7 +185,7 @@
     text-decoration: none;
 
     &:hover {
-      color: var(--global-masthead-link-color-hover);
+      color: #2979ab;
     }
   }
 
@@ -277,7 +277,7 @@
       font-size: $type-size-5;
 
       &:hover {
-        color: var(--global-masthead-link-color-hover);
+        color: #2979ab;
         background: var(--global-border-color);
       }
     }
