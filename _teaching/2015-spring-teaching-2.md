@@ -1,7 +1,7 @@
 ---
 title: "Math 531: Real Analysis (Graduate)"
 collection: teaching
-type: "Grader"
+type: "Undergraduate Teaching Assistant"
 # permalink: /teaching/2015-spring-teaching-1
 venue: "Duke University, Department of Mathematics"
 date: 01-01-2025
