@@ -41,21 +41,3 @@
     "vendor/font-awesome/brands",
     "vendor/magnific-popup/magnific-popup"
 ;
-
-// Remove underline from talk titles that are no longer links
-.archive__item-title {
-  text-decoration: none;
-}
-
-.archive__item-title:hover {
-  text-decoration: none;
-}
-
-// In case the underline is from a link inside it (fallback)
-.archive__item-title a {
-  text-decoration: none;
-}
-
-.archive__item-title a:hover {
-  text-decoration: none;
-}
