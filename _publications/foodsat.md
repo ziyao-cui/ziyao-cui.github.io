@@ -1,8 +1,8 @@
 ---
-title: "Small Area Estimation with Satellite Imagery"
+title: "FoodSat: Small Area Estimation for Food Security Analysis with Satellite Imagery"
 collection: publications
 category: preparation
-permalink: /publication/small-area-estimation-with-satellite-imagery
+permalink: /publication/foodsat
 # excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
 # date: 2010-10-01
 # venue: 'To be submitted to ICLR'
