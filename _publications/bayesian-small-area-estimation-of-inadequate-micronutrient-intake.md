@@ -8,5 +8,5 @@ permalink: /publication/bayesian-small-area-estimation-of-inadequate-micronutrie
 venue: 'To be submitted to International Journal of Health Geographics'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: 'Sahoko Ishida, Mohammed Aheed Osman, <strong>Ziyao Cui</strong>, Seth Flaxman'
+# citation: 'Sahoko Ishida, Mohammed Aheed Osman, <strong>Ziyao Cui</strong>, Seth Flaxman'
 ---

@@ -8,5 +8,5 @@ permalink: /publication/foodsat
 # venue: 'To be submitted to ICLR'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: '<strong>Ziyao Cui</strong>, Sahoko Ishida, Seth Flaxman'
+# citation: '<strong>Ziyao Cui</strong>, Sahoko Ishida, Seth Flaxman'
 ---
