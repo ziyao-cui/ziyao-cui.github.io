@@ -11,3 +11,5 @@ Hello! I'm Ziyao (Richard) Cui, an undergraduate at [Duke University](https://cs
 
 I’ve been fortunate to be advised by [Dr. Jian Pei](https://sites.google.com/view/jpei/jian-peis-homepage), [Dr. Cynthia Rudin](https://users.cs.duke.edu/~cynthia/), and [Dr. Edric Tam](https://www.edrictam.com/) during my time at Duke. In Spring 2025, I had the privilege of studying at the [University of Oxford](https://www.cs.ox.ac.uk/), where I worked with [Dr. Seth Flaxman](https://www.cs.ox.ac.uk/people/seth.flaxman/) and [Dr. Sahoko Ishida](https://mlgh.net/author/sahoko-ishida/) as a part of the [Machine Learning &
 Global Health Network](https://mlgh.net/) on the intersection of computer vision and statistical modeling for food security.
+
+You can find [my Google Scholar page here](https://scholar.google.com/citations?hl=en&authuser=6&user=J-iNaqMAAAAJ) and [CV here](https://ziyao-cui.github.io/cv/).
