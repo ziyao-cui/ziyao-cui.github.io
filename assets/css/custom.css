@@ -1,5 +1,32 @@
 /* === Publications: layout + theme class overrides === */
 
+/* ---- Publication buttons, theme-aware ---- */
+.pub-link {
+  background: var(--button-bg);
+  color: var(--text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color .15s ease, color .15s ease, transform .12s ease;
+}
+
+/* Default hover (light theme) */
+[data-theme="light"] .pub-link:hover,
+html:not([data-theme]) .pub-link:hover {
+  background: #2563eb;   /* blue */
+  color: #ffffff;         /* white text */
+}
+
+/* Hover (dark theme) */
+[data-theme="dark"] .pub-link:hover {
+  background: #93c5fd;    /* lighter blue background */
+  color: #0f1724;         /* dark text for contrast */
+}
+
+
 /* Publication rows — single-column so action buttons sit underneath titles/authors */
 .pub-row {
   display: grid;
