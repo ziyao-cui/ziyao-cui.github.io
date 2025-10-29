@@ -8,5 +8,5 @@ date: 2010-11-30
 venue: 'Expected November 2025; to be submitted to 2026 International Joint Conference on Artificial Intelligence (IJCAI)'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: '<strong>Ziyao Cui</strong>, Jian Pei'
+citation: '<u>Ziyao Cui</u>, Jian Pei'
 ---

@@ -8,5 +8,5 @@ date: 2025-12-02
 venue: 'Expected December 2025; to be submitted to 2026 International Conference on Machine Learning (ICML)'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: '<strong>Ziyao Cui</strong>, Edrim Tam'
+citation: '<u>Ziyao Cui</u>, Edrim Tam'
 ---

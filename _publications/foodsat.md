@@ -8,5 +8,5 @@ date: 2025-12-01
 venue: 'Expected December 2025.'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: '<strong>Ziyao Cui</strong>, Sahoko Ishida, Seth Flaxman'
+citation: '<u>Ziyao Cui</u>, Sahoko Ishida, Seth Flaxman'
 ---

@@ -1,41 +1,5 @@
 /* === Publications: layout + theme class overrides === */
 
-/* ---- Box around button group ---- */
-.pub-links {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  align-items: center;
-
-  /* Add border box styling */
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.6rem 0.8rem;
-  background: var(--card-bg);
-  box-shadow: 0 4px 12px var(--shadow);
-}
-
-/* Buttons inside the box */
-.pub-link {
-  background: var(--button-bg);
-  color: var(--text);
-  padding: 0.35rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: none;  /* keep inner buttons flat */
-  text-decoration: none;
-  transition: background-color .12s ease, color .12s ease;
-}
-.pub-link:hover,
-.pub-link:focus {
-  background: var(--link);
-  color: #fff;
-  transform: none;
-  box-shadow: none;
-}
-
 /* Publication rows — single-column so action buttons sit underneath titles/authors */
 .pub-row {
   display: grid;
@@ -49,7 +13,7 @@
 .pub-meta { min-width: 0; }
 .pub-title { margin: 0 0 0.25rem 0; font-size: 1.05rem; font-weight: 700; line-height:1.25; }
 .pub-title a { color: var(--text); text-decoration: none; }
-.pub-title a:hover, .pub-title a:focus { color: var(--link); transform: translateY(-1px); }
+/* .pub-title a:hover, .pub-title a:focus { color: var(--link); transform: translateY(-1px); } */
 
 .pub-citation { color: var(--text); font-size: 0.98rem; margin-bottom: 0.25rem; }
 .pub-venue { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.25rem; }

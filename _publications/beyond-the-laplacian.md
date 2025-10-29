@@ -8,5 +8,5 @@ date: 2025-09-24
 venue: 'Under review at 2026 International Conference on Learning Representations (ICLR)'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: '<strong>Ziyao Cui</strong>, Edric Tam'
+citation: '<u>Ziyao Cui</u>, Edric Tam'
 ---
