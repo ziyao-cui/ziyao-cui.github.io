@@ -1,10 +1,10 @@
-/* ========= Publications CSS: light/dark mode + layout tweaks ========= */
+/* === Publications: layout + theme class overrides === */
 
-/* CSS variables for theme-aware colors */
+/* Base variables (light by default) */
 :root {
   --bg: #ffffff;
-  --text: #0f1724;       /* main text */
-  --muted: #6b7280;      /* venue/date etc */
+  --text: #0f1724;
+  --muted: #6b7280;
   --card-bg: #ffffff;
   --link: #2563eb;
   --button-bg: #ffffff;
@@ -12,10 +12,12 @@
   --shadow: rgba(2,6,23,0.06);
 }
 
-/* Dark mode overrides */
+/* In case a user prefers dark by system, keep these as fallback.
+   But class-based overrides below (html.dark / html.light) will take precedence
+   if those classes are present on the <html> element. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b0f13;
+    --bg: #071018;
     --text: #e6eef8;
     --muted: #9aa6b2;
     --card-bg: #071018;
@@ -26,107 +28,81 @@
   }
 }
 
-/* Ensure body text uses the variables (so all text is readable) */
-body {
-  background: var(--bg);
-  color: var(--text);
+/* Class-based theme overrides: these will be effective when the theme toggle
+   changes classes on the <html> element (html.light or html.dark). */
+/* Light mode class (explicit) */
+html.light, html.theme-light {
+  --bg: #ffffff;
+  --text: #0f1724;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --link: #2563eb;
+  --button-bg: #ffffff;
+  --border: rgba(15,23,36,0.06);
+  --shadow: rgba(2,6,23,0.06);
 }
 
-/* Publication list container */
-.pub-list { margin: 0; padding: 0; }
+/* Dark mode class (explicit) */
+html.dark, html.theme-dark {
+  --bg: #071018;
+  --text: #e6eef8;
+  --muted: #9aa6b2;
+  --card-bg: #071018;
+  --link: #8ab4ff;
+  --button-bg: #0a1220;
+  --border: rgba(255,255,255,0.06);
+  --shadow: rgba(0,0,0,0.5);
+}
 
-/* Each publication row uses a simple grid; actions are below meta visually */
+/* Apply colors */
+body { background: var(--bg); color: var(--text); }
+
+/* Publication rows — single-column so action buttons sit underneath titles/authors */
 .pub-row {
   display: grid;
-  grid-template-columns: 1fr; /* single column, buttons will sit below meta */
+  grid-template-columns: 1fr;
   gap: 0.6rem;
   padding: 0.9rem 0;
   border-bottom: 1px solid var(--border);
+  background: transparent;
 }
 
-/* Meta block (title, authors, venue) */
 .pub-meta { min-width: 0; }
-.pub-title {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.25;
-}
+.pub-title { margin: 0 0 0.25rem 0; font-size: 1.05rem; font-weight: 700; line-height:1.25; }
 .pub-title a { color: var(--text); text-decoration: none; }
 .pub-title a:hover, .pub-title a:focus { color: var(--link); transform: translateY(-1px); }
 
-/* Citation text (your HTML like <strong> will be preserved) */
-.pub-citation { color: var(--text); font-size: 0.98rem; margin-bottom: 0.25rem; word-break: break-word; }
-.pub-citation strong { font-weight: 700; }
-
-/* Venue & year */
+.pub-citation { color: var(--text); font-size: 0.98rem; margin-bottom: 0.25rem; }
 .pub-venue { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.25rem; }
 
-/* Actions block (buttons) — placed underneath by layout above */
 .pub-actions { display:flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-
-/* Links group */
 .pub-links { display:flex; gap: 0.5rem; flex-wrap:wrap; align-items:center; }
 .pub-link {
   background: var(--button-bg);
   color: var(--text);
-  text-decoration: none;
   padding: 0.35rem 0.55rem;
   border-radius: 10px;
   border: 1px solid var(--border);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.92rem;
   box-shadow: 0 8px 22px var(--shadow);
+  text-decoration: none;
   transition: transform .12s ease, box-shadow .12s ease;
 }
 .pub-link:hover, .pub-link:focus { transform: translateY(-3px); box-shadow: 0 14px 30px var(--shadow); }
 
-/* Remove Website button specifically by not rendering it in the include (we already removed it). */
-
-/* Abstract toggle button */
-.pub-abstract-toggle {
-  padding: 0.35rem 0.62rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--button-bg);
-  color: var(--text);
-  cursor: pointer;
-  font-weight: 700;
-}
-.pub-abstract-toggle[aria-expanded="true"] { outline: 2px solid rgba(79,70,229,0.18); }
-
-/* Abstract content styling */
-.pub-abstract {
-  width: 100%;
-  background: rgba(250,250,255,0.02); /* subtle */
-  padding: 0.6rem;
-  border-radius: 8px;
-  border: 1px solid rgba(15,23,36,0.03);
-  color: var(--text);
-}
-
-/* Year headings (for published group) */
+/* Year heading */
 .pub-year {
-  font-size: 1.35rem;
-  margin-top: 1.75rem;
-  margin-bottom: 0.6rem;
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.4rem;
+  font-size: 1.35rem; margin-top: 1.75rem; margin-bottom: 0.6rem;
+  color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.4rem;
 }
 
-/* Responsive: nothing special — items stack vertically already */
+/* On very wide screens make a 2-column layout but keep buttons under meta visually */
 @media (min-width: 920px) {
-  /* optional: make title + actions a two-column layout on wide screens but keep buttons underneath visually */
-  .pub-row {
-    display: grid;
-    grid-template-columns: 1fr 260px;
-    gap: 1rem;
-    align-items: start;
-  }
-  .pub-actions { align-items: end; } /* align action buttons to right on large screens but still under meta */
-  .pub-abstract { grid-column: 1 / -1; } /* ensure abstract spans both columns */
+  .pub-row { grid-template-columns: 1fr 260px; gap: 1rem; align-items: start; }
+  .pub-actions { align-items: end; } /* align actions to the right column */
+  .pub-abstract { grid-column: 1 / -1; } /* if you later show abstracts ensure they span full width */
 }
 
-/* Tweak for accessibility: focus outlines */
-.pub-link:focus, .pub-abstract-toggle:focus { outline: 3px solid rgba(59,130,246,0.25); outline-offset: 2px; }
+/* Accessibility */
+.pub-link:focus { outline: 3px solid rgba(59,130,246,0.25); outline-offset: 2px; }

@@ -1,13 +1,11 @@
 {% include base_path %}
 
 {%- comment -%}
-Include API:
-  {% include archive-single.html post=post %}
-or
-  {% include archive-single.html %} inside a loop where `post` is defined
-
-Expects front matter keys like:
-  title, citation, venue, date, paperurl, slidesurl, bibtexurl, excerpt (or abstract), permalink
+Simplified publication item:
+ - Title links to paperurl if present; otherwise plain text (no permalink to project page)
+ - Only shows PDF and BibTeX links (no Website, no Abstract)
+ - Year appended to venue only if category == "published"
+ - Usage: {% include archive-single.html post=post %} or used inside a loop
 {%- endcomment -%}
 
 {%- assign p = include.post | default: post -%}
@@ -20,14 +18,13 @@ Expects front matter keys like:
 
 <article class="archive__item pub-row" itemscope itemtype="http://schema.org/CreativeWork">
 
-  <!-- LEFT: meta -->
+  <!-- Meta -->
   <div class="pub-meta">
     <h3 class="pub-title" itemprop="headline">
       {% if p.paperurl %}
         <a href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a>
-        <a href="{{ base_path }}{{ p.url }}" rel="permalink" title="Permalink"><i class="fa fa-link" aria-hidden="true"></i><span class="sr-only">Permalink</span></a>
       {% else %}
-        <a href="{{ base_path }}{{ p.url }}" rel="permalink">{{ title_text }}</a>
+        {{ title_text }}
       {% endif %}
     </h3>
 
@@ -36,34 +33,24 @@ Expects front matter keys like:
     {% endif %}
 
     {% if p.venue %}
-      <div class="pub-venue"><i>{{ p.venue }}</i>{% if p.date %}, {{ p.date | date: "%Y" }}{% endif %}</div>
+      <div class="pub-venue">
+        <i>{{ p.venue }}</i>{% if p.category == "published" and p.date %}, {{ p.date | date: "%Y" }}{% endif %}
+      </div>
     {% elsif p.date %}
-      <div class="pub-venue">{{ p.date | date: "%Y" }}</div>
+      <div class="pub-venue">{% if p.category == "published" %}{{ p.date | date: "%Y" }}{% endif %}</div>
     {% endif %}
   </div>
 
-  <!-- RIGHT (moved under meta visually via CSS): Links + Abstract toggle -->
+  <!-- Actions (buttons underneath) -->
   <div class="pub-actions">
     <div class="pub-links">
       {% if p.paperurl %}
         <a class="pub-link" href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">PDF</a>
       {% endif %}
-      {% if p.slidesurl %}
-        <a class="pub-link" href="{{ p.slidesurl }}" target="_blank" rel="noopener noreferrer">Abstract</a>
-      {% endif %}
       {% if p.bibtexurl %}
         <a class="pub-link" href="{{ p.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
       {% endif %}
     </div>
-
-    {% assign abstract_text = p.excerpt | default: p.abstract %}
-    {% if abstract_text %}
-      <button class="pub-abstract-toggle" aria-expanded="false" aria-controls="abstract-{{ p.url | slugify | replace: '-', '' }}" onclick="(function(btn){ var id = btn.getAttribute('aria-controls'); var el = document.getElementById(id); var expanded = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', String(!expanded)); if(!expanded){ el.style.maxHeight = el.scrollHeight + 'px'; el.setAttribute('aria-hidden','false'); } else { el.style.maxHeight = '0'; el.setAttribute('aria-hidden','true'); } })(this);">Abstract</button>
-
-      <div id="abstract-{{ p.url | slugify | replace: '-', '' }}" class="pub-abstract" aria-hidden="true" style="max-height:0;overflow:hidden;transition:max-height .22s ease;">
-        {{ abstract_text | markdownify }}
-      </div>
-    {% endif %}
   </div>
 
 </article>
