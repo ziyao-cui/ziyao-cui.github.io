@@ -41,7 +41,9 @@
 }
 
 /* ==== Individual boxed button style ==== */
-.pub-link {
+html:not([data-theme]), [data-theme="light"] .pub-link:hover,
+html:not([data-theme]) .pub-link:focus,
+[data-theme="light"] .pub-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +51,7 @@
   padding: 0.5rem 0.85rem;      /* vertical + horizontal padding */
   border-radius: 8px;
   border: 1px solid var(--border);
-  background: var(--button-bg);
+  background: #0f1724;
   color: var(--text);
   font-weight: 700;
   font-size: 0.92rem;
@@ -64,19 +66,19 @@
 html:not([data-theme]), [data-theme="light"] .pub-link:hover,
 html:not([data-theme]) .pub-link:focus,
 [data-theme="light"] .pub-link:focus {
-  background: #2563eb;    /* blue background */
+  background: #ffffff;    /* blue background */
   color: #ffffff;         /* white text */
   border-color: #2563eb;
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 /* Dark theme hover/focus: pick a light-blue background and dark text for contrast */
 [data-theme="dark"] .pub-link:hover,
 [data-theme="dark"] .pub-link:focus {
-  background: #93c5fd;    /* light blue */
+  background: #0f1724;    /* light blue */
   color: #0f1724;         /* dark text */
   border-color: #93c5fd;
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 /* Accessibility: visible focus ring for keyboard users */
@@ -111,32 +113,6 @@ html:not([data-theme]) .pub-link:focus,
 /* Small screen touch tweaks */
 @media (max-width: 520px) {
   .pub-link { min-width: 72px; padding: 0.45rem 0.7rem; font-size: 0.88rem; }
-}
-
-
-/* Make sure the buttons inside still look right */
-.pub-link {
-  background: var(--button-bg);
-  color: var(--text);
-  padding: 0.35rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: background-color .15s ease, color .15s ease, transform .12s ease;
-}
-
-/* Hover states */
-[data-theme="light"] .pub-link:hover,
-html:not([data-theme]) .pub-link:hover {
-  background: #2563eb;
-  color: #ffffff;
-}
-
-[data-theme="dark"] .pub-link:hover {
-  background: #93c5fd;
-  color: #0f1724;
 }
 
 
