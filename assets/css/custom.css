@@ -1,6 +1,34 @@
 /* === Publications: layout + theme class overrides === */
 
-/* ---- Publication buttons, theme-aware ---- */
+/* ==== Add a box around the button group ==== */
+.pub-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* New boxed styling */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
+  background: var(--card-bg);
+  box-shadow: 0 4px 14px var(--shadow);
+}
+
+/* Light mode: subtle background & border */
+[data-theme="light"] .pub-links {
+  background: #f9fafb;
+  border-color: rgba(15, 23, 36, 0.08);
+}
+
+/* Dark mode: slightly brighter border and darker background */
+[data-theme="dark"] .pub-links {
+  background: #111827;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Make sure the buttons inside still look right */
 .pub-link {
   background: var(--button-bg);
   color: var(--text);
@@ -13,18 +41,18 @@
   transition: background-color .15s ease, color .15s ease, transform .12s ease;
 }
 
-/* Default hover (light theme) */
+/* Hover states */
 [data-theme="light"] .pub-link:hover,
 html:not([data-theme]) .pub-link:hover {
-  background: #2563eb;   /* blue */
-  color: #ffffff;         /* white text */
+  background: #2563eb;
+  color: #ffffff;
 }
 
-/* Hover (dark theme) */
 [data-theme="dark"] .pub-link:hover {
-  background: #93c5fd;    /* lighter blue background */
-  color: #0f1724;         /* dark text for contrast */
+  background: #93c5fd;
+  color: #0f1724;
 }
+
 
 
 /* Publication rows — single-column so action buttons sit underneath titles/authors */
