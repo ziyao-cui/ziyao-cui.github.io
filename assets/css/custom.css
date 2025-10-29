@@ -1,6 +1,6 @@
 /* === Publications: layout + theme class overrides === */
 
-/* Base variables (light by default) */
+/* Base variables (light by default)
 :root {
   --bg: #ffffff;
   --text: #0f1724;
@@ -15,7 +15,7 @@
 /* In case a user prefers dark by system, keep these as fallback.
    But class-based overrides below (html.dark / html.light) will take precedence
    if those classes are present on the <html> element. */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --bg: #071018;
     --text: #e6eef8;
@@ -26,12 +26,12 @@
     --border: rgba(255,255,255,0.06);
     --shadow: rgba(0,0,0,0.5);
   }
-}
+} */
 
 /* Class-based theme overrides: these will be effective when the theme toggle
    changes classes on the <html> element (html.light or html.dark). */
 /* Light mode class (explicit) */
-html.light, html.theme-light {
+/* html.light, html.theme-light {
   --bg: #ffffff;
   --text: #0f1724;
   --muted: #6b7280;
@@ -40,10 +40,10 @@ html.light, html.theme-light {
   --button-bg: #ffffff;
   --border: rgba(15,23,36,0.06);
   --shadow: rgba(2,6,23,0.06);
-}
+} */
 
 /* Dark mode class (explicit) */
-html.dark, html.theme-dark {
+/* html.dark, html.theme-dark {
   --bg: #071018;
   --text: #e6eef8;
   --muted: #9aa6b2;
@@ -52,10 +52,10 @@ html.dark, html.theme-dark {
   --button-bg: #0a1220;
   --border: rgba(255,255,255,0.06);
   --shadow: rgba(0,0,0,0.5);
-}
+} */
 
 /* Apply colors */
-body { background: var(--bg); color: var(--text); }
+/* body { background: var(--bg); color: var(--text); } */
 
 /* Publication rows — single-column so action buttons sit underneath titles/authors */
 .pub-row {

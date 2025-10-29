@@ -47,6 +47,9 @@ Simplified publication item:
       {% if p.paperurl %}
         <a class="pub-link" href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">PDF</a>
       {% endif %}
+      {% if p.slidesurl %}
+        <a class="pub-link" href="{{ p.slidesurl }}" target="_blank" rel="noopener noreferrer">Abstract</a>
+      {% endif %}
       {% if p.bibtexurl %}
         <a class="pub-link" href="{{ p.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
       {% endif %}
