@@ -1,23 +1,16 @@
 {% include base_path %}
 
 {%- comment -%}
-This include supports usage both as:
-  {% include archive-single.html %}
-inside a loop where `post` is defined, or
+Include API:
   {% include archive-single.html post=post %}
-by passing a post explicitly.
+or
+  {% include archive-single.html %} inside a loop where `post` is defined
 
-It expects (if available) the following post/front-matter keys:
-  - title, citation, venue, date, paperurl, slidesurl, bibtexurl, excerpt (or abstract)
+Expects front matter keys like:
+  title, citation, venue, date, paperurl, slidesurl, bibtexurl, excerpt (or abstract), permalink
 {%- endcomment -%}
 
 {%- assign p = include.post | default: post -%}
-
-{%- if p.header.teaser %}
-  {% capture teaser %}{{ p.header.teaser }}{% endcapture %}
-{% else %}
-  {% assign teaser = site.teaser %}
-{% endif %}
 
 {%- if p.id %}
   {% assign title_text = p.title | markdownify | remove: "<p>" | remove: "</p>" %}
@@ -25,66 +18,52 @@ It expects (if available) the following post/front-matter keys:
   {% assign title_text = p.title %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item pub-row" itemscope itemtype="http://schema.org/CreativeWork">
+<article class="archive__item pub-row" itemscope itemtype="http://schema.org/CreativeWork">
 
-    {%- comment -%} LEFT: title, authors/citation, venue/year {%- endcomment -%}
-    <div class="pub-meta">
-      <h3 class="pub-title" itemprop="headline">
-        {%- comment -%} Prefer linking to paperurl, otherwise to page permalink {%- endcomment -%}
-        {% if p.paperurl %}
-          <a href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a>
-          <a href="{{ base_path }}{{ p.url }}" rel="permalink" title="permalink"><i class="fa fa-link" aria-hidden="true"></i><span class="sr-only">Permalink</span></a>
-        {% elsif p.link %}
-          <a href="{{ p.link }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a>
-          <a href="{{ base_path }}{{ p.url }}" rel="permalink" title="permalink"><i class="fa fa-link" aria-hidden="true"></i><span class="sr-only">Permalink</span></a>
-        {% else %}
-          <a href="{{ base_path }}{{ p.url }}" rel="permalink">{{ title_text }}</a>
-        {% endif %}
-      </h3>
-
-      {% if p.citation %}
-        <div class="pub-citation">{{ p.citation }}</div>
+  <!-- LEFT: meta -->
+  <div class="pub-meta">
+    <h3 class="pub-title" itemprop="headline">
+      {% if p.paperurl %}
+        <a href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a>
+        <a href="{{ base_path }}{{ p.url }}" rel="permalink" title="Permalink"><i class="fa fa-link" aria-hidden="true"></i><span class="sr-only">Permalink</span></a>
+      {% else %}
+        <a href="{{ base_path }}{{ p.url }}" rel="permalink">{{ title_text }}</a>
       {% endif %}
+    </h3>
 
-      {% if p.venue %}
-        <div class="pub-venue"><i>{{ p.venue }}</i>{% if p.date %}, {{ p.date | date: "%Y" }}{% endif %}</div>
-      {% elsif p.date %}
-        <div class="pub-venue">{{ p.date | date: "%Y" }}</div>
+    {% if p.citation %}
+      <div class="pub-citation">{{ p.citation }}</div>
+    {% endif %}
+
+    {% if p.venue %}
+      <div class="pub-venue"><i>{{ p.venue }}</i>{% if p.date %}, {{ p.date | date: "%Y" }}{% endif %}</div>
+    {% elsif p.date %}
+      <div class="pub-venue">{{ p.date | date: "%Y" }}</div>
+    {% endif %}
+  </div>
+
+  <!-- RIGHT (moved under meta visually via CSS): Links + Abstract toggle -->
+  <div class="pub-actions">
+    <div class="pub-links">
+      {% if p.paperurl %}
+        <a class="pub-link" href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">PDF</a>
+      {% endif %}
+      {% if p.slidesurl %}
+        <a class="pub-link" href="{{ p.slidesurl }}" target="_blank" rel="noopener noreferrer">Abstract</a>
+      {% endif %}
+      {% if p.bibtexurl %}
+        <a class="pub-link" href="{{ p.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
       {% endif %}
     </div>
 
-    {%- comment -%} RIGHT: links (PDF/Bib/Abstract/Slides/Website) and optional abstract toggle {%- endcomment -%}
-    <div class="pub-actions">
-      <div class="pub-links">
-        {% if p.paperurl %}
-          <a class="pub-link" href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">PDF</a>
-        {% endif %}
-        {% if p.slidesurl %}
-          <a class="pub-link" href="{{ p.slidesurl }}" target="_blank" rel="noopener noreferrer">Abstract</a>
-        {% endif %}
-        {% if p.bibtexurl %}
-          <a class="pub-link" href="{{ p.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
-        {% endif %}
-        {% if p.url %}
-          <a class="pub-link" href="{{ p.url }}" target="_blank" rel="noopener noreferrer">Website</a>
-        {% endif %}
-        {% if p.doi %}
-          <a class="pub-link" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
-        {% endif %}
+    {% assign abstract_text = p.excerpt | default: p.abstract %}
+    {% if abstract_text %}
+      <button class="pub-abstract-toggle" aria-expanded="false" aria-controls="abstract-{{ p.url | slugify | replace: '-', '' }}" onclick="(function(btn){ var id = btn.getAttribute('aria-controls'); var el = document.getElementById(id); var expanded = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', String(!expanded)); if(!expanded){ el.style.maxHeight = el.scrollHeight + 'px'; el.setAttribute('aria-hidden','false'); } else { el.style.maxHeight = '0'; el.setAttribute('aria-hidden','true'); } })(this);">Abstract</button>
+
+      <div id="abstract-{{ p.url | slugify | replace: '-', '' }}" class="pub-abstract" aria-hidden="true" style="max-height:0;overflow:hidden;transition:max-height .22s ease;">
+        {{ abstract_text | markdownify }}
       </div>
+    {% endif %}
+  </div>
 
-      {% assign abstract_text = p.excerpt | default: p.abstract %}
-      {% if abstract_text %}
-        <button class="pub-abstract-toggle" aria-expanded="false" aria-controls="abstract-{{ p.url | slugify | replace: '-', '' }}" onclick="(function(btn){ var target = document.getElementById(btn.getAttribute('aria-controls')); var expanded = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', String(!expanded)); if(!expanded){ target.style.maxHeight = target.scrollHeight + 'px'; target.setAttribute('aria-hidden','false'); } else { target.style.maxHeight = '0'; target.setAttribute('aria-hidden','true'); } })(this);">
-          Abstract
-        </button>
-
-        <div id="abstract-{{ p.url | slugify | replace: '-', '' }}" class="pub-abstract" aria-hidden="true" style="max-height:0;overflow:hidden;transition:max-height .22s ease;">
-          {{ abstract_text | markdownify }}
-        </div>
-      {% endif %}
-    </div>
-
-  </article>
-</div>
+</article>

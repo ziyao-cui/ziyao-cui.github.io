@@ -13,18 +13,47 @@ author_profile: true
   {% endif %}
 </div>
 
-<!-- Group publications by year (newer first) -->
-{% assign pubs = site.publications | sort: "year" | reverse %}
-{% assign years = pubs | map: "year" | uniq %}
+{%- comment -%}
+Collect all publications and split into two groups:
+ - published (category == "published") → group by year (descending)
+ - preparation (category == "preparation" OR category == "in-prep") → its own section
+If you use a different category name for upcoming work, change the string accordingly.
+{%- endcomment -%}
 
-{% for year in years %}
-  <h2 class="pub-year">{{ year }}</h2>
-  <ol class="pub-list">
-    {% assign this_year_pubs = pubs | where: "year", year %}
-    {% for post in this_year_pubs %}
-      <li class="pub-item">
-        {% include archive-single.html post=post %}
-      </li>
+{%- assign pubs_all = site.publications | sort: "date" | reverse -%}
+
+{%- assign pubs_published = pubs_all | where: "category", "published" -%}
+{%- assign pubs_prep = pubs_all | where: "category", "preparation" -%}
+{%- if pubs_prep == empty %}
+  {%- assign pubs_prep = pubs_all | where: "category", "in-prep" -%}
+{%- endif %}
+
+{%- if pubs_published != empty %}
+  {%- comment -%} Group published by year (derived from date) {%- endcomment -%}
+  {% assign years = "" | split: "" %}
+  {% for item in pubs_published %}
+    {% assign y = item.date | date: "%Y" %}
+    {% unless years contains y %}
+      {% assign years = years | push: y %}
+    {% endunless %}
+  {% endfor %}
+  {% for year in years %}
+    <h2 class="pub-year">{{ year }}</h2>
+    <div class="pub-list">
+      {% for post in pubs_published %}
+        {% if post.date | date: "%Y" == year %}
+          {% include archive-single.html post=post %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endif %}
+
+{%- if pubs_prep != empty %}
+  <h2 class="pub-year">Publications in Preparation</h2>
+  <div class="pub-list">
+    {% for post in pubs_prep %}
+      {% include archive-single.html post=post %}
     {% endfor %}
-  </ol>
-{% endfor %}
+  </div>
+{% endif %}
