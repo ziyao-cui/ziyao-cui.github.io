@@ -1,86 +1,90 @@
 {% include base_path %}
 
-{% if post.header.teaser %}
-  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{%- comment -%}
+This include supports usage both as:
+  {% include archive-single.html %}
+inside a loop where `post` is defined, or
+  {% include archive-single.html post=post %}
+by passing a post explicitly.
+
+It expects (if available) the following post/front-matter keys:
+  - title, citation, venue, date, paperurl, slidesurl, bibtexurl, excerpt (or abstract)
+{%- endcomment -%}
+
+{%- assign p = include.post | default: post -%}
+
+{%- if p.header.teaser %}
+  {% capture teaser %}{{ p.header.teaser }}{% endcapture %}
 {% else %}
   {% assign teaser = site.teaser %}
 {% endif %}
 
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{%- if p.id %}
+  {% assign title_text = p.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
-  {% assign title = post.title %}
+  {% assign title_text = p.title %}
 {% endif %}
 
 <div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="">
-      </div>
-    {% endif %}
+  <article class="archive__item pub-row" itemscope itemtype="http://schema.org/CreativeWork">
 
-    <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-      {% endif %}
-    </h2>
-    
-    {% if post.read_time %}
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
-
-        {% if post.citation and post.paperurl and post.slidesurl and post.bibtexurl %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}<br /><a href="{{ post.paperurl }}">PDF</a> | <a href="{{ post.slidesurl }}">Abstract</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
-        {% elsif post.citation and post.paperurl and post.slidesurl %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}<br /><a href="{{ post.paperurl }}">PDF</a> | <a href="{{ post.slidesurl }}">Abstract</a></p>
-        {% elsif post.citation and post.paperurl and post.bibtexurl %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}<br /><a href="{{ post.paperurl }}">PDF</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
-        {% elsif post.citation and post.paperurl %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}<br /><a href="{{ post.paperurl }}">PDF</a></p>
-        {% elsif post.citation and post.slidesurl and post.bibtexurl %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}<br /><a href="{{ post.slidesurl }}">Abstract</a> | <a href="{{ post.bibtexurl}}">Bibtex</a></p>
-        {% elsif post.citation and post.slidesurl %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}<br /><a href="{{ post.slidesurl }}">Abstract</a></p>
-        {% elsif post.citation and post.bibtexurl %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}<br /><a href="{{ post.bibtexurl }}">Bibtex</a></p>
-        {% elsif post.citation and post.venue %}
-          <p>{{ post.citation }}<br /><i>{{ post.venue }}</i></p>
-          {% elsif post.citation %}
-          <p>{{ post.citation }}</p>
-        {% elsif post.paperurl and post.bibtexurl %}
-          <p><a href=" {{ post.paperurl }} ">PDF</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
-        {% elsif post.paperurl %}
-          <p><a href=" {{ post.paperurl }} ">PDF</a></p>
-        {% elsif post.slidesurl and post.bibtexurl %}
-          <p><a href="{{ post.slidesurl }}">Abstract</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
-        {% elsif post.slidesurl %}
-          <p><a href="{{ post.slidesurl }}">Abstract</a></p>
-        {% elsif post.bibtexurl %}
-          <p><a href="{{ post.bibtexurl }}">Bibtex</a></p>
+    {%- comment -%} LEFT: title, authors/citation, venue/year {%- endcomment -%}
+    <div class="pub-meta">
+      <h3 class="pub-title" itemprop="headline">
+        {%- comment -%} Prefer linking to paperurl, otherwise to page permalink {%- endcomment -%}
+        {% if p.paperurl %}
+          <a href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a>
+          <a href="{{ base_path }}{{ p.url }}" rel="permalink" title="permalink"><i class="fa fa-link" aria-hidden="true"></i><span class="sr-only">Permalink</span></a>
+        {% elsif p.link %}
+          <a href="{{ p.link }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a>
+          <a href="{{ base_path }}{{ p.url }}" rel="permalink" title="permalink"><i class="fa fa-link" aria-hidden="true"></i><span class="sr-only">Permalink</span></a>
+        {% else %}
+          <a href="{{ base_path }}{{ p.url }}" rel="permalink">{{ title_text }}</a>
         {% endif %}
+      </h3>
 
-        <!-- {% if post.collection == 'teaching' %}
-          <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif post.collection == 'publications' %}
-          <p><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif post.date %}
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
-        {% endif %} -->
+      {% if p.citation %}
+        <div class="pub-citation">{{ p.citation }}</div>
+      {% endif %}
 
-    <!-- {% if post.excerpt and site.read_more != 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
-    {% elsif post.excerpt and site.read_more == 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
-    {% endif %} -->
+      {% if p.venue %}
+        <div class="pub-venue"><i>{{ p.venue }}</i>{% if p.date %}, {{ p.date | date: "%Y" }}{% endif %}</div>
+      {% elsif p.date %}
+        <div class="pub-venue">{{ p.date | date: "%Y" }}</div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} RIGHT: links (PDF/Bib/Abstract/Slides/Website) and optional abstract toggle {%- endcomment -%}
+    <div class="pub-actions">
+      <div class="pub-links">
+        {% if p.paperurl %}
+          <a class="pub-link" href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">PDF</a>
+        {% endif %}
+        {% if p.slidesurl %}
+          <a class="pub-link" href="{{ p.slidesurl }}" target="_blank" rel="noopener noreferrer">Abstract</a>
+        {% endif %}
+        {% if p.bibtexurl %}
+          <a class="pub-link" href="{{ p.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
+        {% endif %}
+        {% if p.url %}
+          <a class="pub-link" href="{{ p.url }}" target="_blank" rel="noopener noreferrer">Website</a>
+        {% endif %}
+        {% if p.doi %}
+          <a class="pub-link" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+        {% endif %}
+      </div>
+
+      {% assign abstract_text = p.excerpt | default: p.abstract %}
+      {% if abstract_text %}
+        <button class="pub-abstract-toggle" aria-expanded="false" aria-controls="abstract-{{ p.url | slugify | replace: '-', '' }}" onclick="(function(btn){ var target = document.getElementById(btn.getAttribute('aria-controls')); var expanded = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', String(!expanded)); if(!expanded){ target.style.maxHeight = target.scrollHeight + 'px'; target.setAttribute('aria-hidden','false'); } else { target.style.maxHeight = '0'; target.setAttribute('aria-hidden','true'); } })(this);">
+          Abstract
+        </button>
+
+        <div id="abstract-{{ p.url | slugify | replace: '-', '' }}" class="pub-abstract" aria-hidden="true" style="max-height:0;overflow:hidden;transition:max-height .22s ease;">
+          {{ abstract_text | markdownify }}
+        </div>
+      {% endif %}
+    </div>
 
   </article>
 </div>
