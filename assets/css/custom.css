@@ -1,32 +1,118 @@
 /* === Publications: layout + theme class overrides === */
 
-/* ==== Add a box around the button group ==== */
+/* ===== Publications: single-column layout + per-button boxed style ===== */
+
+/* Force single-column entries so buttons always sit underneath meta */
+.pub-row {
+  display: grid;
+  grid-template-columns: 1fr; /* single column always */
+  gap: 0.6rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+}
+
+/* Meta (title/authors/venue) */
+.pub-meta { min-width: 0; }
+.pub-title { margin: 0 0 0.25rem 0; font-size: 1.05rem; font-weight: 700; line-height:1.25; }
+.pub-title a { color: var(--text); text-decoration: none; }
+.pub-citation { color: var(--text); font-size: 0.98rem; margin-bottom: 0.25rem; }
+.pub-venue { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.25rem; }
+
+/* Actions container sits under the meta, left-aligned */
+.pub-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: flex-start;
+  margin-top: 0.4rem;
+}
+
+/* Buttons row: keep them inline but allow wrapping */
 .pub-links {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.55rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-  /* New boxed styling */
+/* ==== Individual boxed button style ==== */
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;              /* ensures square-ish buttons */
+  padding: 0.5rem 0.85rem;      /* vertical + horizontal padding */
+  border-radius: 8px;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.6rem 0.8rem;
-  background: var(--card-bg);
-  box-shadow: 0 4px 14px var(--shadow);
+  background: var(--button-bg);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: none;             /* flat button inside its box */
+  transition: background-color .14s ease, color .14s ease, border-color .14s ease, transform .12s ease;
+  cursor: pointer;
 }
 
-/* Light mode: subtle background & border */
-[data-theme="light"] .pub-links {
-  background: #f9fafb;
-  border-color: rgba(15, 23, 36, 0.08);
+/* Hover/focus: entire button box changes color (theme-aware) */
+/* Light theme (explicit), or default when no data-theme present */
+html:not([data-theme]), [data-theme="light"] .pub-link:hover,
+html:not([data-theme]) .pub-link:focus,
+[data-theme="light"] .pub-link:focus {
+  background: #2563eb;    /* blue background */
+  color: #ffffff;         /* white text */
+  border-color: #2563eb;
+  transform: translateY(-2px);
 }
 
-/* Dark mode: slightly brighter border and darker background */
-[data-theme="dark"] .pub-links {
-  background: #111827;
-  border-color: rgba(255, 255, 255, 0.08);
+/* Dark theme hover/focus: pick a light-blue background and dark text for contrast */
+[data-theme="dark"] .pub-link:hover,
+[data-theme="dark"] .pub-link:focus {
+  background: #93c5fd;    /* light blue */
+  color: #0f1724;         /* dark text */
+  border-color: #93c5fd;
+  transform: translateY(-2px);
 }
+
+/* Accessibility: visible focus ring for keyboard users */
+.pub-link:focus {
+  outline: 3px solid rgba(59,130,246,0.22);
+  outline-offset: 3px;
+}
+
+/* Keep year heading styles if present */
+.pub-year {
+  font-size: 1.35rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+
+/* If you still want a two-column layout on very wide screens *but keep buttons under meta*:
+   this keeps grid two columns visually but forces the actions to span the right column under meta */
+@media (min-width: 1200px) {
+  .pub-row {
+    grid-template-columns: 1fr 280px;
+    align-items: start;
+  }
+  /* Ensure actions stay visually under the meta by spanning/placement */
+  .pub-actions { grid-column: 2 / 3; align-items: end; margin-top: 0; }
+  /* Make abstract (if used later) span full width */
+  .pub-abstract { grid-column: 1 / -1; }
+}
+
+/* Small screen touch tweaks */
+@media (max-width: 520px) {
+  .pub-link { min-width: 72px; padding: 0.45rem 0.7rem; font-size: 0.88rem; }
+}
+
 
 /* Make sure the buttons inside still look right */
 .pub-link {
