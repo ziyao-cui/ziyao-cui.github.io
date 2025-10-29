@@ -1,61 +1,40 @@
 /* === Publications: layout + theme class overrides === */
 
-/* Base variables (light by default)
-:root {
-  --bg: #ffffff;
-  --text: #0f1724;
-  --muted: #6b7280;
-  --card-bg: #ffffff;
-  --link: #2563eb;
-  --button-bg: #ffffff;
-  --border: rgba(15,23,36,0.06);
-  --shadow: rgba(2,6,23,0.06);
+/* ---- Box around button group ---- */
+.pub-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+
+  /* Add border box styling */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
-/* In case a user prefers dark by system, keep these as fallback.
-   But class-based overrides below (html.dark / html.light) will take precedence
-   if those classes are present on the <html> element. */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #071018;
-    --text: #e6eef8;
-    --muted: #9aa6b2;
-    --card-bg: #071018;
-    --link: #8ab4ff;
-    --button-bg: #0a1220;
-    --border: rgba(255,255,255,0.06);
-    --shadow: rgba(0,0,0,0.5);
-  }
-} */
-
-/* Class-based theme overrides: these will be effective when the theme toggle
-   changes classes on the <html> element (html.light or html.dark). */
-/* Light mode class (explicit) */
-/* html.light, html.theme-light {
-  --bg: #ffffff;
-  --text: #0f1724;
-  --muted: #6b7280;
-  --card-bg: #ffffff;
-  --link: #2563eb;
-  --button-bg: #ffffff;
-  --border: rgba(15,23,36,0.06);
-  --shadow: rgba(2,6,23,0.06);
-} */
-
-/* Dark mode class (explicit) */
-/* html.dark, html.theme-dark {
-  --bg: #071018;
-  --text: #e6eef8;
-  --muted: #9aa6b2;
-  --card-bg: #071018;
-  --link: #8ab4ff;
-  --button-bg: #0a1220;
-  --border: rgba(255,255,255,0.06);
-  --shadow: rgba(0,0,0,0.5);
-} */
-
-/* Apply colors */
-/* body { background: var(--bg); color: var(--text); } */
+/* Buttons inside the box */
+.pub-link {
+  background: var(--button-bg);
+  color: var(--text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: none;  /* keep inner buttons flat */
+  text-decoration: none;
+  transition: background-color .12s ease, color .12s ease;
+}
+.pub-link:hover,
+.pub-link:focus {
+  background: var(--link);
+  color: #fff;
+  transform: none;
+  box-shadow: none;
+}
 
 /* Publication rows — single-column so action buttons sit underneath titles/authors */
 .pub-row {
