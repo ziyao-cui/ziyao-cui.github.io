@@ -23,16 +23,17 @@
 .pub-link {
   background: var(--button-bg);
   color: var(--text);
-  padding: 0.35rem 0.55rem;
+  /* padding: 0.35rem 0.55rem; */
   border-radius: 10px;
   border: 1px solid var(--border);
+  color: var(--text);
   font-weight: 700;
   font-size: 0.92rem;
   box-shadow: 0 8px 22px var(--shadow);
   text-decoration: none;
   transition: transform .12s ease, box-shadow .12s ease;
 }
-.pub-link:hover, .pub-link:focus { transform: translateY(-3px); box-shadow: 0 14px 30px var(--shadow); }
+.pub-link:hover, .pub-link:focus { box-shadow: 0 14px 30px var(--shadow); }
 
 /* Year heading */
 .pub-year {
