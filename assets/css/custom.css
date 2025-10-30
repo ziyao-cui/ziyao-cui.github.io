@@ -24,8 +24,8 @@
   background: var(--button-bg);
   color: var(--text);
   /* padding: 0.35rem 0.55rem; */
-  border-radius: 10px;
-  border: 1px solid var(--border);
+  /* border-radius: 10px; */
+  border: 1px solid rgba(0, 0, 0, 0.15);
   color: var(--text);
   font-weight: 700;
   font-size: 0.92rem;
@@ -40,6 +40,61 @@
   font-size: 1.35rem; margin-top: 1.75rem; margin-bottom: 0.6rem;
   color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.4rem;
 }
+
+/* Theme variables (add to your root / theme blocks) */
+:root {
+  --button-bg: #f7f7f7;                 /* light button background */
+  --button-bg-hover: transparent;       /* keep hover bg subtle by default */
+  --border: rgba(0,0,0,0.12);           /* visible on light bg */
+  --link: #0ea5e9;                      /* example link/accent color */
+  --text: #0f172a;
+}
+[data-theme="dark"] {
+  --button-bg: #101114;                 /* dark button background */
+  --button-bg-hover: rgba(255,255,255,0.02);
+  --border: rgba(255,255,255,0.12);     /* visible on dark bg */
+  --link: #60a5fa;                      /* slightly different for dark if desired */
+  --text: #e6eef8;
+}
+
+/* Flat, theme-aware pub-link; overrides previous styles */
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.36rem 0.6rem;          /* tweak to taste */
+  background: var(--button-bg);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-radius: 0;                 /* flat rectangular corners */
+  box-shadow: none;                 /* remove floating shadow for flat look */
+
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+
+  transition: color .12s ease, background .12s ease, border-color .12s ease;
+}
+
+/* Hover / focus: change to link color, no translate, no shadow */
+.pub-link:hover,
+.pub-link:focus {
+  color: var(--link);
+  border-color: var(--link);
+  background: var(--button-bg-hover);
+  box-shadow: none;
+  transform: none;                  /* ensure no translate/position shift */
+  outline: none;                    /* keep custom focus below */
+}
+
+/* Keep a visible focus ring for keyboard users (accessible) */
+.pub-link:focus-visible {
+  outline: 3px solid rgba(59,130,246,0.25);
+  outline-offset: 2px;
+}
+
 
 /* On very wide screens make a 2-column layout but keep buttons under meta visually */
 /* @media (min-width: 920px) {
