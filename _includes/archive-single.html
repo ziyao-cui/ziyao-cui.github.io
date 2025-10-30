@@ -21,9 +21,10 @@ Simplified publication item:
   <!-- Meta -->
   <div class="pub-meta">
     <h3 class="pub-title" itemprop="headline">
-      <!-- {% if p.paperurl %}
-        <a href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a>
-      {% else %} -->
+      {% if p.paperurl %}
+        <!-- <a href="{{ p.paperurl }}" target="_blank" rel="noopener noreferrer">{{ title_text }}</a> -->
+        {{ title_text }}
+      {% else %}
         {{ title_text }}
       {% endif %}
     </h3>
