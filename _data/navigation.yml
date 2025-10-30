@@ -21,7 +21,7 @@ main:
     url: /service/
         
   - title: "Awards"
-   url: /awards/
+    url: /awards/
     
   - title: "CV"
     url: /cv/
