@@ -8,4 +8,4 @@ date: 01-01-2025
 location: "Durham, NC"
 ---
 
-Evaluated and provided detailed feedback on weekly Real Analysis homework assignments for a graduate-level course with 20+ students, ensuring clarity, rigor, and consistency.
+- Evaluated and provided detailed feedback on weekly Real Analysis homework assignments for a graduate-level course with 20+ students, ensuring clarity, rigor, and consistency.
