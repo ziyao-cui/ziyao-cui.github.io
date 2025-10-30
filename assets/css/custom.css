@@ -16,7 +16,7 @@
 /* .pub-title a:hover, .pub-title a:focus { color: var(--link); transform: translateY(-1px); } */
 
 .pub-citation { color: var(--text); font-size: 0.98rem; margin-bottom: 0.25rem; }
-.pub-venue { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.25rem; }
+.pub-venue { color: var(--muted); font-size: 0.9rem; margin-bottom: 0; }
 
 .pub-actions { display:flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
 .pub-links { display:flex; gap: 0.5rem; flex-wrap:wrap; align-items:center; }
@@ -49,4 +49,4 @@
 } */
 
 /* Accessibility */
-.pub-link:focus { outline: 3px solid rgba(59,130,246,0.25); outline-offset: 2px; }
+/* .pub-link:focus { outline: 3px solid rgba(59,130,246,0.25); outline-offset: 2px; } */
