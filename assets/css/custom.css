@@ -89,6 +89,13 @@
   outline: none;                    /* keep custom focus below */
 }
 
+.pub-link:focus {
+  color: var(--text);
+  border-color: var(--border);
+  background: transparent;
+  box-shadow: none;
+}
+
 /* Keep a visible focus ring for keyboard users (accessible) */
 .pub-link:focus-visible {
   outline: 3px solid rgba(59,130,246,0.25);
