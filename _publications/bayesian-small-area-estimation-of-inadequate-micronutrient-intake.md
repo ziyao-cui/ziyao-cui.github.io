@@ -8,5 +8,5 @@ date: 2025-11-01
 venue: 'Expected November 2025; to be submitted to International Journal of Health Geographics'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: 'Sahoko Ishida, Mohammed Aheed Osman, <u>Ziyao Cui</u>, Seth Flaxman'
+citation: 'Sahoko Ishida, Mohammed Aheed Osman, <u>Ziyao Cui</u>, Kevin Tang, Seth Flaxman'
 ---
