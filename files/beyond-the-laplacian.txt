@@ -1,0 +1,9 @@
+@misc{cui2025laplacianinterpolatedspectralaugmentation,
+      title={Beyond the Laplacian: Interpolated Spectral Augmentation for Graph Neural Networks}, 
+      author={Ziyao Cui and Edric Tam},
+      year={2025},
+      eprint={2511.11928},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2511.11928}, 
+}
