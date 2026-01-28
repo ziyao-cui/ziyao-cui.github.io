@@ -17,33 +17,41 @@ author_profile: true
 Collect all publications and split into two groups:
  - published (category == "published") → group by year (descending)
  - preparation (category == "preparation" OR category == "in-prep") → its own section
-If you use a different category name for upcoming work, change the string accordingly.
 {%- endcomment -%}
 
 {%- assign pubs_all = site.publications | sort: "date" | reverse -%}
-
 {%- assign pubs_published = pubs_all | where: "category", "published" -%}
-{%- assign pubs_prep = pubs_all | where: "category", "preparation" -%}
-{%- if pubs_prep == empty %}
-  {%- assign pubs_prep = pubs_all | where: "category", "in-prep" -%}
-{%- endif %}
 
-{%- if pubs_published != empty %}
-  {%- comment -%} Group published by year (derived from date) {%- endcomment -%}
-  {% assign years = "" | split: "" %}
-  {% for item in pubs_published %}
-    {% assign y = item.date | date: "%Y" %}
-    {% unless years contains y %}
-      {% assign years = years | push: y %}
-    {% endunless %}
-  {% endfor %}
-  {% for year in years %}
-    <h2 class="pub-year">{{ year }}</h2>
+{%- comment -%}
+Also capture "preparation" or "in-prep" category for upcoming work
+{%- endcomment -%}
+{%- assign pubs_prep = pubs_all | where: "category", "preparation" -%}
+{% if pubs_prep == empty %}
+  {%- assign pubs_prep = pubs_all | where: "category", "in-prep" -%}
+{% endif %}
+
+{%- comment -%}
+Deduplicate published items by URL (defensive).
+{%- endcomment -%}
+{% assign seen_urls = "" | split: "" %}
+{% assign pubs_unique = "" | split: "" %}
+{% for p in pubs_published %}
+  {% unless seen_urls contains p.url %}
+    {% assign seen_urls = seen_urls | push: p.url %}
+    {% assign pubs_unique = pubs_unique | push: p %}
+  {% endunless %}
+{% endfor %}
+
+{%- if pubs_unique != empty -%}
+  {% assign pubs_by_year = pubs_unique | group_by_exp: "item", "item.date | date: '%Y'" %}
+  {%- comment -%} Ensure year groups are sorted descending (numeric). {%- endcomment -%}
+  {% assign pubs_by_year = pubs_by_year | sort: "name" | reverse %}
+
+  {% for group in pubs_by_year %}
+    <h2 class="pub-year">{{ group.name }}</h2>
     <div class="pub-list">
-      {% for post in pubs_published %}
-        {% if post.date | date: "%Y" == year %}
-          {% include archive-single.html post=post %}
-        {% endif %}
+      {% for post in group.items %}
+        {% include archive-single.html post=post %}
       {% endfor %}
     </div>
   {% endfor %}
