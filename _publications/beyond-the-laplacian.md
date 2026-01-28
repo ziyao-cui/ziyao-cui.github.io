@@ -4,7 +4,7 @@ collection: publications
 category: published
 permalink: /publication/learning-graph-operators
 # excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
-date: 2025-12-5
+date: 2026-1-30
 venue: 'Under review at 2026 International Conference on Machine Learning (ICML)'
 # slidesurl: 'https://arxiv.org/abs/2511.11928' # Use as abstract link
 # paperurl: 'https://arxiv.org/pdf/2511.11928'
