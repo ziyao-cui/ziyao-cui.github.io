@@ -1,0 +1,9 @@
+@misc{cui2026uncertaintypropagatedknowledgedistillation,
+      title={How Is Uncertainty Propagated in Knowledge Distillation?}, 
+      author={Ziyao Cui and Jian Pei},
+      year={2026},
+      eprint={2601.18909},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2601.18909}, 
+}

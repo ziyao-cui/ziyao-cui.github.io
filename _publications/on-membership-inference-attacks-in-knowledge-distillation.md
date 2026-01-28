@@ -3,7 +3,7 @@ title: "On Membership Inference Attacks in Knowledge Distillation"
 collection: publications
 category: published
 permalink: /publication/on-membership-inference-attacks-in-knowledge-distillation
-date: 2025-05-17
+date: 2026-01-06
 venue: 'arXiv preprint; Under review at the 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026)'
 slidesurl: 'https://arxiv.org/abs/2505.11837' # Use as abstract link
 paperurl: 'https://arxiv.org/pdf/2505.11837'

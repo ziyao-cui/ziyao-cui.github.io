@@ -1,9 +1,6 @@
-@misc{cui2025membershipinferenceattacksknowledge,
-      title={On Membership Inference Attacks in Knowledge Distillation}, 
-      author={Ziyao Cui and Minxing Zhang and Jian Pei},
-      year={2025},
-      eprint={2505.11837},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2505.11837}, 
+@article{cui2025membership,
+  title={On Membership Inference Attacks in Knowledge Distillation},
+  author={Cui, Ziyao and Zhang, Minxing and Pei, Jian},
+  journal={arXiv preprint arXiv:2505.11837},
+  year={2025}
 }

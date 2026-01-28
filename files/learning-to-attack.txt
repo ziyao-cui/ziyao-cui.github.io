@@ -1,9 +1,6 @@
-@misc{cui2025learningattackuncoveringprivacy,
-      title={Learning to Attack: Uncovering Privacy Risks in Sequential Data Releases}, 
-      author={Ziyao Cui and Minxing Zhang and Jian Pei},
-      year={2025},
-      eprint={2510.24807},
-      archivePrefix={arXiv},
-      primaryClass={cs.CR},
-      url={https://arxiv.org/abs/2510.24807}, 
+@article{cui2025learning,
+  title={Learning to Attack: Uncovering Privacy Risks in Sequential Data Releases},
+  author={Cui, Ziyao and Zhang, Minxing and Pei, Jian},
+  journal={arXiv preprint arXiv:2510.24807},
+  year={2025}
 }
