@@ -4,7 +4,7 @@ collection: publications
 category: preparation
 permalink: /publication/bayesian-small-area-estimation-of-inadequate-micronutrient-intake
 # excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
-date: 2025-12-31
+date: 2025-12-30
 venue: 'Expected February 2026; to be submitted to International Journal of Health Geographics'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
