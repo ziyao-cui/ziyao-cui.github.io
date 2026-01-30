@@ -35,7 +35,7 @@ Simplified publication item:
 
     {% if p.venue %}
       <div class="pub-venue">
-        <i>{{ p.venue }}</i>{% if p.category == "published" and p.date %}, {{ p.date | date: "%Y" }}{% endif %}
+        <i>{{ p.venue }}</i>
       </div>
     {% elsif p.date %}
       <div class="pub-venue">{% if p.category == "published" %}{{ p.date | date: "%Y" }}{% endif %}</div>
