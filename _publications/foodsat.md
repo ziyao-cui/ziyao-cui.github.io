@@ -4,7 +4,7 @@ collection: publications
 category: preparation
 permalink: /publication/foodsat
 # excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
-date: 2025-12-01
+date: 2025-11-01
 venue: 'Expected June 2026'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper2.pdf'
