@@ -3,10 +3,10 @@ title: "On Membership Inference Attacks in Knowledge Distillation"
 collection: publications
 category: published
 permalink: /publication/on-membership-inference-attacks-in-knowledge-distillation
-date: 2026-01-06
-venue: 'arXiv preprint; Under review at the 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026)'
-slidesurl: 'https://arxiv.org/abs/2505.11837' # Use as abstract link
-paperurl: 'https://arxiv.org/pdf/2505.11837'
+date: 2026-06-06
+venue: 'ACM SIGKDD Explorations Newsletter, Volume 28, Issue 1'
+slidesurl: 'https://dl.acm.org/doi/10.1145/3820356.3820359' # Use as abstract link
+paperurl: 'https://dl.acm.org/doi/pdf/10.1145/3820356.3820359'
 bibtexurl: '/files/on-membership-inference-attacks-in-knowledge-distillation.txt'
 citation: '<u>Ziyao Cui</u>, Minxing Zhang, Jian Pei' # Use as author names
 ---

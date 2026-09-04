@@ -25,11 +25,11 @@ author:
   avatar           : "RichardCui.jpg"
   name             : "Ziyao (Richard) Cui"
   pronouns         : # "he/him"  
-  bio              : "CS & Stats @ Duke"
-  location         : "Durham, NC"
-  employer         : "Duke University"
+  bio              : "PhD @ MIT"
+  location         : "Cambridge, MA"
+  employer         : "MIT"
   uri              : # URL
-  email            : "richard.cui@duke.edu" 
+  email            : "ziyaoc@mit.edu" 
 
   # Academic websites
   academia         : # URL

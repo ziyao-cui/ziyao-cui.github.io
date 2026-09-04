@@ -1,0 +1,6 @@
+@article{ishida2026mapping,
+  title={Mapping Subnational Vulnerability to Inadequate Micronutrient Intake using a Bayesian Small Area Estimation Framework},
+  author={Ishida, Sahoko and Osman, Mohammed and Cui, Ziyao and Agu, Uchenna and Becher, Emily and Battcock, Gabriel and Hernandez, Daniel and Piovani, Duccio and Knight, Frances and Flaxman, Seth and others},
+  journal={arXiv preprint arXiv:2604.14971},
+  year={2026}
+}

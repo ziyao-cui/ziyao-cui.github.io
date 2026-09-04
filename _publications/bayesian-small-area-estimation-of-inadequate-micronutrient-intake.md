@@ -1,12 +1,13 @@
 ---
 title: "Bayesian Small Area Estimation of Inadequate Micronutrient Intake"
 collection: publications
-category: preparation
+category: published
 permalink: /publication/bayesian-small-area-estimation-of-inadequate-micronutrient-intake
 # excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
-date: 2025-12-30
-venue: 'Expected February 2026; to be submitted to International Journal of Health Geographics'
-# slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
-# paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: 'Sahoko Ishida, Mohammed Aheed Osman, <u>Ziyao Cui</u>, Kevin Tang, Seth Flaxman'
+date: 2026-04-30
+venue: 'arXiv preprint; Under Review at the International Journal of Health Geographics'
+slidesurl: 'https://arxiv.org/abs/2604.14971' # Use as abstract link
+paperurl: 'https://arxiv.org/pdf/2604.14971'
+bibtexurl: '/files/bayesian-small-area-estimation-of-inadequate-micronutrient-intake.txt'
+citation: 'Sahoko Ishida, Mohammed Osman, <u>Ziyao Cui</u>, Uchenna Agu, Emily Becher, Gabriel Battcock, Daniel Hernandez, Duccio Piovani, Frances Knight, Seth Flaxman, Kevin Tang'
 ---
