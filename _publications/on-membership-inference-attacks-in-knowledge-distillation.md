@@ -4,7 +4,7 @@ collection: publications
 category: published
 permalink: /publication/on-membership-inference-attacks-in-knowledge-distillation
 date: 2026-06-06
-venue: 'ACM SIGKDD Explorations Newsletter, Volume 28, Issue 1'
+venue: 'ACM SIGKDD Explorations Newsletter, Volume 28, Issue 1, June 2026'
 slidesurl: 'https://dl.acm.org/doi/10.1145/3820356.3820359' # Use as abstract link
 paperurl: 'https://dl.acm.org/doi/pdf/10.1145/3820356.3820359'
 bibtexurl: '/files/on-membership-inference-attacks-in-knowledge-distillation.txt'
